@@ -62,7 +62,7 @@ function App() {
     socket.emit( 'newLobby', id )
   }
   
-  
+
   return (
     <div className="container">
     
