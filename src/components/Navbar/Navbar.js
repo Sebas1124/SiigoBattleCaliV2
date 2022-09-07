@@ -2,17 +2,18 @@ import React from 'react'
 
 import './nav_help';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { About } from '../About/About';
 
 import  Logo  from '../../assets/images/siigologo.png';
+import { ErrorPage } from '../404/ErrorPage';
 
 
 export const Navbar = () => {
   return (
         <BrowserRouter>
             <Routes>
-                <Route path='/home' element={ About }/>
+                <Route path='*' element={ <ErrorPage/> }/>
             </Routes>
             <header className="header" id="header">
             <nav className="nav container">
@@ -23,13 +24,13 @@ export const Navbar = () => {
                 <div className="nav__menu" id="nav-menu">
                     <ul className="nav__list">
                         <li className="nav__item">
-                            <a href="{{ route('main')}}#home" className="nav__link active-link">Inicio</a>
+                            <Link to='/' className="nav__link active-link">Inicio</Link>
                         </li>
                         <li className="nav__item">
-                            <a href="{{  route('main') }}#about" className="nav__link">Acerca de</a>
+                            <Link to='/' className="nav__link ">Acerca de</Link>
                         </li>
                         <li className="nav__item">
-                            <a href="{{ route('main') }}#play" className="nav__link">Jugar</a>
+                            <Link to='/' className="nav__link ">Jugar</Link>
                         </li>
 
                     </ul>

@@ -13,7 +13,6 @@ root.render(
     <>
         <Navbar />
         <About/>
-        <App />
         <Play/>
         <Footer/>
     </>

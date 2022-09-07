@@ -35,7 +35,7 @@ export const Footer = () => {
                     <h2 className="footer__subtitle">
                         Contact
                     </h2>
-                    <p class="footer__information">
+                    <p className="footer__information">
                         +57 3115440812
                         sebas.rosero.lopez@gmail.com
                     </p>
