@@ -1,23 +1,98 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Lobbys } from "./components/Lobbys";
+import { NewLobby } from "./components/NewLobby";
+import io from 'socket.io-client'
+
+const connectSocketServer = () =>{
+  const socket = io.connect('http://localhost:8080', {
+    transports: ['websocket']
+  });
+  return socket;
+}
+
+const create_room = () =>{
+  var letters = "0123456789ABCDEF";
+
+  var room = '#';
+
+  for (var i = 0; i < 6; i++)
+  room += letters[(Math.floor(Math.random() * 16))];
+
+  return room;
+}
 
 function App() {
+
+  const [ socket ] = useState( connectSocketServer() )
+  const [ online, setOnline ] = useState(false);
+  const [ lobbys, setLobbys ] = useState([])
+
+  useEffect(() => {
+    setOnline( socket.connected )
+  }, [ socket ]);
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      setOnline( true )
+    });
+
+  }, [ socket ])
+  
+  useEffect(() => {
+    socket.on('disconnect', () => {
+      setOnline( false )
+    });
+
+  }, [ socket ])
+
+  useEffect(() => {
+    socket.on('current-lobbys', (lobbys) => {
+      setLobbys(lobbys)
+    });
+  
+  }, [ socket ])
+
+
+  const Join_room = ( id ) => {
+    console.log(id)
+      socket.emit( 'NewPlayer', id )
+  }
+
+  const newRoom = ( id ) =>{
+    socket.emit( 'newLobby', id )
+  }
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="container">
+    
+      <div className="alert">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Estado del servidor: 
+          {
+            (online) 
+              ? <span className="text-success m-1">Conectado</span>
+              : <span className="text-danger m-1">Desconectado</span>
+
+          }
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+
+
+      <h2> Lobbys disponibles </h2>
+      <hr />
+
+      <div className="row">
+        <div className="col-8">
+            <Lobbys data={ lobbys } newPlayers={ Join_room }/>
+        </div>
+        
+        <div className="col-4">
+            <NewLobby newLobby={ newRoom }/>
+        </div>
+      </div>
+
+
     </div>
   );
 }
