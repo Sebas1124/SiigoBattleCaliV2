@@ -10,18 +10,9 @@ const connectSocketServer = () =>{
   return socket;
 }
 
-const create_room = () =>{
-  var letters = "0123456789ABCDEF";
 
-  var room = '#';
 
-  for (var i = 0; i < 6; i++)
-  room += letters[(Math.floor(Math.random() * 16))];
-
-  return room;
-}
-
-function App() {
+export function App() {
 
   const [ socket ] = useState( connectSocketServer() )
   const [ online, setOnline ] = useState(false);
@@ -61,40 +52,40 @@ function App() {
   const newRoom = ( id ) =>{
     socket.emit( 'newLobby', id )
   }
-  
 
   return (
-    <div className="container">
-    
-      <div className="alert">
-        <p>
-          Estado del servidor: 
-          {
-            (online) 
-              ? <span className="text-success m-1">Conectado</span>
-              : <span className="text-danger m-1">Desconectado</span>
+      <div>
 
-          }
-        </p>
-      </div>
-
-
-      <h2> Lobbys disponibles </h2>
-      <hr />
-
-      <div className="row">
-        <div className="col-8">
-            <Lobbys data={ lobbys } newPlayers={ Join_room }/>
-        </div>
+        <div className="container">
         
-        <div className="col-4">
-            <NewLobby newLobby={ newRoom }/>
+          <div className="alert">
+            <p>
+              Estado del servidor: 
+              {
+                (online) 
+                  ? <span className="text-success m-1">Conectado</span>
+                  : <span className="text-danger m-1">Desconectado</span>
+
+              }
+            </p>
+          </div>
+
+
+          <h2> Lobbys disponibles </h2>
+          <hr />
+
+          <div className="row">
+            <div className="col-8">
+                <Lobbys data={ lobbys } newPlayers={ Join_room }/>
+            </div>
+            
+            <div className="col-4">
+                <NewLobby newLobby={ newRoom }/>
+            </div>
+          </div>
+
+
         </div>
       </div>
-
-
-    </div>
   );
 }
-
-export default App;
