@@ -30,20 +30,21 @@ export const NewLobby = ({ newLobby }) => {
 
   return (
     <>
-        <h3>Crear Sala</h3>
-
-        <form onSubmit={ onSubmit }>
-        <input 
-        type="hidden" 
-        className='form-control m-2' 
-        value={ lobby }
-        onChange={ (ev) => setLobby( ev.target.value ) }
-        />
-            <button 
-              className="btn btn-success"
-              >Crear
-              </button>
-        </form>
+        <div className="create__lobby">
+          <h3>Crea una sala y comparte el codigo</h3>
+          <form onSubmit={ onSubmit }>
+          <input 
+          type="hidden" 
+          className='form-control m-2' 
+          value={ lobby }
+          onChange={ (ev) => setLobby( ev.target.value ) }
+          />
+              <button 
+                className="button__table"
+                >Crear
+                </button>
+          </form>
+        </div>
     </>
   )
 }
