@@ -1,9 +1,11 @@
 .modal {
+   position: absolute;
     /* display: none; */
     align-items: center;
     justify-content: center;
-    position: fixed;
-    z-index: 1;
+    z-index: 10;
+    top: 10rem;
+    left: 26rem;
 
   }
   .modal[open] {
@@ -12,7 +14,7 @@
     /* margin-left: 35%; */
   }
   .model-inner {
-    background-color: white;
+    background-color: rgb(189, 189, 189);
     border-radius: 0.5em;
     max-width: 600px;
     padding: 2em;

@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { App } from '../../App';
 
 import './modal.css';
 
-export const Modal = ({ closeModal }) => {
-
-
+export const RoomPlayers = ({ closeModal }) => {
   return (
-    <>
-        <div className="modal__container">
+    <div className="modal__container">
           <div id="demo-modal" className="modal" role="dialog">
           <div className="model-inner">
               <div className="modal-header">
-              <h3>Lista de Salas</h3>
+              <h3>Sala de espera</h3>
               <button onClick={ closeModal } className="button__table" data-id="demo-modal" aria-label="Close">
                   &times;
               </button>
@@ -20,8 +17,6 @@ export const Modal = ({ closeModal }) => {
                   <App/>
               </div>
           </div>
-        </div>
-    </>
- 
+    </div>
   )
 }

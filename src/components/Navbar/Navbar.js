@@ -12,9 +12,6 @@ import { ErrorPage } from '../404/ErrorPage';
 export const Navbar = () => {
   return (
         <BrowserRouter>
-            <Routes>
-                <Route path='*' element={ <ErrorPage/> }/>
-            </Routes>
             <header className="header" id="header">
             <nav className="nav container">
                 <a href="" className="nav__logo">

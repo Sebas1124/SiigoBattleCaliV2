@@ -3,6 +3,8 @@ import { Lobbys } from "./components/Lobbys";
 import { NewLobby } from "./components/NewLobby";
 import io from 'socket.io-client'
 
+import './App.css'
+
 const connectSocketServer = () =>{
   const socket = io.connect('http://localhost:8080', {
     transports: ['websocket']
@@ -11,12 +13,14 @@ const connectSocketServer = () =>{
 }
 
 
-
 export function App() {
 
   const [ socket ] = useState( connectSocketServer() )
-  const [ online, setOnline ] = useState(false);
-  const [ lobbys, setLobbys ] = useState([])
+  const [ online, setOnline ]   = useState(false);
+  const [ lobbys, setLobbys ]   = useState([])
+  const [ players, setPlayers ] = useState([])
+
+  console.log( players )
 
   useEffect(() => {
     setOnline( socket.connected )
@@ -43,9 +47,15 @@ export function App() {
   
   }, [ socket ])
 
+  useEffect(() => {
+    socket.on('current-players', (players) => {
+      setPlayers(players)
+    });
+  
+  }, [ socket ])
+
 
   const Join_room = ( id ) => {
-    console.log(id)
       socket.emit( 'NewPlayer', id )
   }
 
@@ -56,15 +66,15 @@ export function App() {
   return (
       <div>
 
-        <div className="container">
+        <div className="card__container">
         
           <div className="alert">
             <p>
               Estado del servidor: 
               {
                 (online) 
-                  ? <span className="text-success m-1">Conectado</span>
-                  : <span className="text-danger m-1">Desconectado</span>
+                  ? <span className="text-success">Conectado</span>
+                  : <span className="text-danger">Desconectado</span>
 
               }
             </p>
@@ -74,12 +84,12 @@ export function App() {
           <h2> Lobbys disponibles </h2>
           <hr />
 
-          <div className="row">
-            <div className="col-8">
-                <Lobbys data={ lobbys } newPlayers={ Join_room }/>
+          <div className="table__container">
+            <div className="table__left">
+                <Lobbys data={ lobbys } newPlayers={ Join_room } players={ players }/>
             </div>
             
-            <div className="col-4">
+            <div className="table__right">
                 <NewLobby newLobby={ newRoom }/>
             </div>
           </div>
