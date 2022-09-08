@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
 import { App } from '../../App';
 
 import './modal.css';
 
 export const Modal = ({ closeModal }) => {
-
 
   return (
     <>

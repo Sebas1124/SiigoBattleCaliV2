@@ -1,66 +1,47 @@
 import { useEffect, useState } from "react";
 import { Lobbys } from "./components/Lobbys";
 import { NewLobby } from "./components/NewLobby";
-import io from 'socket.io-client'
 
 import './App.css'
-import { Route, Routes } from "react-router-dom";
-
-const connectSocketServer = () =>{
-  const socket = io.connect('http://localhost:8080', {
-    transports: ['websocket']
-  });
-  return socket;
-}
+import { useSocket } from "./components/Hooks/useSocket";
 
 
 export function App() {
 
-  const [ socket ] = useState( connectSocketServer() )
-  const [ online, setOnline ]   = useState(false);
+  const { socket, online } = useSocket('http://localhost:8080');
+
   const [ lobbys, setLobbys ]   = useState([])
   const [ players, setPlayers ] = useState([])
-
-
-  useEffect(() => {
-    setOnline( socket.connected )
-  }, [ socket ]);
-
-  useEffect(() => {
-    socket.on('connect', () => {
-      setOnline( true )
-    });
-
-  }, [ socket ])
-  
-  useEffect(() => {
-    socket.on('disconnect', () => {
-      setOnline( false )
-    });
-
-  }, [ socket ])
+  const [ cards, setCards ]     = useState([])
 
   useEffect(() => {
     socket.on('current-lobbys', (lobbys) => {
       setLobbys(lobbys)
     });
   
-  }, [ socket ])
+  }, [socket])
 
   useEffect(() => {
     socket.on('current-players', (players) => {
       setPlayers(players)
     });
   
-  }, [ socket ])
+  }, [socket])
+
+  useEffect(() => {
+    socket.on('current-cards', (cards) => {
+      setCards(cards)
+    });
+  
+  }, [socket])
 
 
   const Join_room = ( id ) => {
-      socket.emit( 'NewPlayer', id )
+      socket.emit('NewPlayer', id)
   }
 
   const newRoom = ( id ) =>{
-    socket.emit( 'newLobby', id )
+    socket.emit('newLobby', id)
   }
 
   return (

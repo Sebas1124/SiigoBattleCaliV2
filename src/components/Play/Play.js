@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 
 import  Logo  from '../../assets/images/siigologo.png';
-import { useNavigate } from 'react-router-dom';
 
 import { Modal } from '../Modal/Modal';
 
 export const Play = () => {
 
-    const history = useNavigate();
+    const [modal, setModal] = useState(false)
 
-    function onSubmit(e) {
-        e.preventDefault();
+    const onSubmit = () =>{
+        setModal(true)
+    }
 
-        history('/lobbys');
+    const closeModal = () => {
+        setModal(false)
     }
 
 
@@ -35,7 +36,12 @@ export const Play = () => {
                     <p className="quality__description">
                         hola
                     </p>
+                    {
+                        (modal)
+                            ? <Modal closeModal={ closeModal }/>
+                            : null
 
+                    }
                     <div className="quality__buttons">
 
                             <button onClick={ onSubmit } to="/jugar" className="button">JUGAR</button>
