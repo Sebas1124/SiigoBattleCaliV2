@@ -4,7 +4,6 @@ export const Lobbys = ({ data, newPlayers }) => {
 
 const [ lobbys, setLobbys ] = useState(data);
 
-const [max, setMax] = useState(false)
 
 useEffect(() => {
   setLobbys( data );

@@ -3,6 +3,7 @@ import { Lobbys } from "./components/Lobbys";
 import { NewLobby } from "./components/NewLobby";
 import io from 'socket.io-client'
 
+
 const connectSocketServer = () =>{
   const socket = io.connect('http://localhost:8080', {
     transports: ['websocket']
@@ -10,16 +11,6 @@ const connectSocketServer = () =>{
   return socket;
 }
 
-const create_room = () =>{
-  var letters = "0123456789ABCDEF";
-
-  var room = '#';
-
-  for (var i = 0; i < 6; i++)
-  room += letters[(Math.floor(Math.random() * 16))];
-
-  return room;
-}
 
 function App() {
 
@@ -90,7 +81,9 @@ function App() {
         <div className="col-4">
             <NewLobby newLobby={ newRoom }/>
         </div>
-      </div>
+      </div> 
+
+  
 
 
     </div>
