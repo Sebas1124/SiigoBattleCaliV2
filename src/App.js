@@ -4,6 +4,7 @@ import { NewLobby } from "./components/NewLobby";
 import io from 'socket.io-client'
 
 import './App.css'
+import { Route, Routes } from "react-router-dom";
 
 const connectSocketServer = () =>{
   const socket = io.connect('http://localhost:8080', {
@@ -20,7 +21,6 @@ export function App() {
   const [ lobbys, setLobbys ]   = useState([])
   const [ players, setPlayers ] = useState([])
 
-  console.log( players )
 
   useEffect(() => {
     setOnline( socket.connected )

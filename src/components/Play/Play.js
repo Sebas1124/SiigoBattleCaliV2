@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 
 import  Logo  from '../../assets/images/siigologo.png';
+import { useNavigate } from 'react-router-dom';
 
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { Modal } from '../Modal/Modal';
 
 export const Play = () => {
 
-    const [modal, setModal] = useState(false)
+    const history = useNavigate();
 
+    function onSubmit(e) {
+        e.preventDefault();
 
-    const onSubmit = () => {
-        setModal(true)
+        history('/lobbys');
     }
 
-    const onCloseModal = () => {
-        setModal(false)
-    }
 
   return (
     <>
@@ -30,11 +28,6 @@ export const Play = () => {
                 <div className="quality__images">
                     <img src={ Logo } alt="" className="quality__img-big"/>
                 </div>
-                {
-                    (modal) 
-                        ? <Modal closeModal={ onCloseModal }/>
-                        : null
-                }
                 <div className="quality__data">
                     <h1 className="quality__title">Juego de cartas</h1>
                     <h2 className="quality__price">Juega con tus amigos</h2>
