@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+### React + Socket.io ###
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto fue realizado con la tecnologia de React, basado en  JavaScript
 
-## Available Scripts
+Este proyecto cuenta con un servidor online, Trabaja con un socket con comunicacion Full Duplex lo que hace que nuestras aplicaciones se vean en tiempo real en simultaneo con todos los clientes conectados al servidor
 
-In the project directory, you can run:
+para lograr esto, vamos a correr nuestro Socket, que está en un repo https://github.com/Sebas1124/SocketServer
 
-### `npm start`
+### Instalaciones necesarias ###
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1- NodeJS
+2- Nodemon
+3- Git
+4- Visual Studio Code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### ServerSocket ###
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para arrancar el socket, previamente debemos instalar las dependencias de npm con "npm install"
 
-### `npm run build`
+despues de instalar las dependencias, correr el comando "npm run dev" para levantar el servidor en el puerto 8080
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+una vez iniciado el servidor ya queda lsito nuestro backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### React + Socket.io ###
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para correr nuestra aplicacion en react debemos instalar las dependencias de npm "Npm install" despues levantar el servidor con "npm start" con esto neustra aplicacion de react esta´ra corriendo en el puerto 3000
 
-### `npm run eject`
+### Fin ###
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Gracias por esta bonita experiencias y por llevarnos a nuestras más altas exigencias
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Good Job and Just Be Funn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Sebastán Rosero Lopez y Jorge Elias Santos Acosta
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+SENASOFT 2022
