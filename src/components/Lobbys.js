@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Modal } from './Modal/Modal';
 import { RoomPlayers } from './RoomPlayers/RoomPlayers';
 
+import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+
 export const Lobbys = ({ data, newPlayers, players }) => {
 
 const [ lobbys, setLobbys ] = useState(data);
@@ -13,7 +15,7 @@ useEffect(() => {
 }, [ data ])
 
 const onRoomMatch = ( id ) => {
-    newPlayers(id)
+   
     setRoom(true);
 }
 
@@ -22,11 +24,7 @@ const onCloseModal = () =>{
 }
 
   return (
-    <>
-        {
-            (Room)
-                ? 'Sala de espera'
-                :<div className="table-wrapper">
+    <div className="table-wrapper">
                 <table className='fl-table'>
                     <thead>
                         <tr>
@@ -50,7 +48,7 @@ const onCloseModal = () =>{
                                             :   <td>
                                                     <button 
                                                     className="button__table"
-                                                    onClick={ () => onRoomMatch(lobby.id) }
+                                                    onClick={ () =>  newPlayers(lobby.id) }
                                                     >Entrar
                                                     </button>
                                                 </td>
@@ -60,9 +58,7 @@ const onCloseModal = () =>{
                             ))
                         }
                     </tbody>
-                    </table>
-                </div>
-        }
-    </>
+                </table>
+            </div>
   )
 }
