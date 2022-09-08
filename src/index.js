@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { Play } from './components/Play/Play';
+import { RoomMatch } from './components/RoomMatch/RoomMatch';
 
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 
